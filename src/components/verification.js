@@ -5,6 +5,12 @@ const VerificationForm = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
   
+    /**
+     * A function that handles the change event for the verification code input fields.
+     *
+     * @param {Event} e - The event object triggered by the input change.
+     * @param {number} index - The index of the code input field being changed.
+     */
     const handleChange = (e, index) => {
       const { value } = e.target;
       if (/^\d?$/.test(value)) {
@@ -26,6 +32,12 @@ const VerificationForm = () => {
       }
     };
   
+   /**
+   * Handles the paste event for the verification code input fields.
+   *
+   * @param {Event} e - The paste event object.
+   * @return {void} This function does not return anything.
+   */
     const handlePaste = (e) => {
       const pasteData = e.clipboardData.getData('Text');
       if (/^\d{6}$/.test(pasteData)) {
@@ -38,6 +50,11 @@ const VerificationForm = () => {
       e.preventDefault();
     };
   
+    /**
+     * Validates the input fields of a verification code form.
+     *
+     * @return {boolean} Indicates if all input fields are valid.
+     */
     const validateInputs = () => {
       let isValid = true;
       let isSet = false
@@ -61,6 +78,12 @@ const VerificationForm = () => {
       return isValid;
     };
   
+   /**
+    * Handles the form submission for verification.
+    *
+    * @param {Event} e - The event object triggered by the form submission.
+    * @return {Promise<void>} A Promise that resolves when the submission is complete.
+    */ 
     const handleSubmit = async (e) => {
       e.preventDefault();
   
